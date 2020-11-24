@@ -9,6 +9,8 @@ from healthplatform_stats_rest_api import routes, rest_api
 
 _version = routes.__version__
 
+app = application = rest_api
+
 if __name__ == '__main__':
     print('Serving healthplatform_stats_rest_api {routes_version}'.format(routes_version=_version),
           file=stderr)
