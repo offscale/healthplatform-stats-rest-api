@@ -1,10 +1,12 @@
 healthplatform-stats-rest-api
 =============================
 [![License](https://img.shields.io/badge/license-Apache--2.0%20OR%20MIT-blue.svg)](https://opensource.org/licenses/Apache-2.0)
-![Python version](https://img.shields.io/badge/python-3.5%20%7C%203.6%20%7C%203.7-blue)
+![Python version](https://img.shields.io/badge/python-3.5%20%7C%203.6%20%7C%203.7%20%7C%203.8-blue)
 ![Python implementation](https://img.shields.io/badge/implementation-cpython-blue)
 [![Build Status](https://travis-ci.org/offscale/healthplatform-stats-rest-api.svg?branch=master)](https://travis-ci.org/offscale/healthplatform-stats-rest-api)
 [![Coverage Status](https://coveralls.io/repos/github/offscale/healthplatform-stats-rest-api/badge.svg)](https://coveralls.io/github/offscale/healthplatform-stats-rest-api)
+[![black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
+[![Imports: isort](https://img.shields.io/badge/%20imports-isort-%231674b1?style=flat&labelColor=ef8336)](https://pycqa.github.io/isort/)
 
 Python API for Health Platform. Exposes stats and runs ML.
 
@@ -22,7 +24,7 @@ $ pip install .
 $ python -m healthplatform_stats_rest_api
 ```
 
-Additionally there are environment variables, run `grep -F environ healthplatform_stats_rest_api` to see current ones. E.g.:
+Additionally, there are environment variables, run `grep -F environ healthplatform_stats_rest_api` to see current ones. E.g.:
 
     Variable    |  Default
     -------------------------
