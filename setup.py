@@ -1,29 +1,40 @@
-# coding: utf-8
+# -*- coding: utf-8 -*-
 
 from ast import parse
 from distutils.sysconfig import get_python_lib
 from functools import partial
+from operator import attrgetter, itemgetter
 from os import path
-from platform import python_version_tuple
+from sys import version_info
 
 from setuptools import find_packages, setup
 
-if python_version_tuple()[0] == "3":
-    imap = map
-    ifilter = filter
-else:
-    from itertools import ifilter, imap
+if version_info[0] == 2:
+    from itertools import ifilter as filter
+    from itertools import imap as map
 
 if __name__ == "__main__":
     package_name = "healthplatform_stats_rest_api"
 
     with open(path.join(package_name, "__init__.py")) as f:
-        __version__, __author__ = imap(
-            lambda buf: next(imap(lambda e: e.value.s, parse(buf).body)),
-            ifilter(
-                lambda line: line.startswith("__version__")
-                or line.startswith("__author__"),
-                f,
+        __author__, __version__ = map(
+            lambda const: const.value if version_info > (3, 6) else const.s,
+            map(
+                attrgetter("value"),
+                map(
+                    itemgetter(0),
+                    map(
+                        attrgetter("body"),
+                        map(
+                            parse,
+                            filter(
+                                lambda line: line.startswith("__version__")
+                                or line.startswith("__author__"),
+                                f,
+                            ),
+                        ),
+                    ),
+                ),
             ),
         )
 

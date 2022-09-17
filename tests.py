@@ -12,7 +12,6 @@ from webtest import TestApp
 
 from healthplatform_stats_rest_api import rest_api
 from healthplatform_stats_rest_api.analytics import sydney
-from healthplatform_stats_rest_api.routes import run
 
 
 class TestRestApi(TestCase):
@@ -20,7 +19,7 @@ class TestRestApi(TestCase):
     app = TestApp(rest_api)
 
     def test_status(self):
-        """ Not really needed, but whatever """
+        """Not really needed, but whatever"""
         status_resp = self.app.get("/api/status").json
         for k in status_resp.keys():
             if k.endswith("_version"):
@@ -29,7 +28,7 @@ class TestRestApi(TestCase):
     def test_run(self):
         event_start = datetime(year=2019, month=3, day=11, hour=8, tzinfo=sydney)
         event_end = event_start + timedelta(hours=6, minutes=60)
-        actual_output = run(event_start, event_end)
+        actual_output = c.run(event_start, event_end)
 
         PrettyPrinter(indent=4).pprint(actual_output)
 
@@ -75,14 +74,14 @@ class TestRestApi(TestCase):
                 "perceived_risk_mag": {},
             },
             "joint_for_pred": {
-                u"age": {},
-                u"age_mag": {},
-                u"behaviour_change": {},
-                u"client_risk": {},
-                u"client_risk_mag": {},
-                u"gender": {},
-                u"perceived_risk": {},
-                u"perceived_risk_mag": {},
+                "age": {},
+                "age_mag": {},
+                "behaviour_change": {},
+                "client_risk": {},
+                "client_risk_mag": {},
+                "gender": {},
+                "perceived_risk": {},
+                "perceived_risk_mag": {},
             },
             "some_combination": 0,
             "step1_count": 0,
